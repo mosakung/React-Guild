@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Person from './componentFeature/Person';
+import Persons from '../components/Persons/Persons';
 
 const App = props => {
 
@@ -55,16 +55,10 @@ const App = props => {
   if (personsState.showPersons) {
     persons = (
       <div>
-        {
-          personsState.persons.map((persons, index) => {
-            return <Person
-              click={() => deletePersonHandler(index)}
-              name={persons.name}
-              value={persons.value}
-              key={persons.id}
-              changed={(event) => nameChangedHandler(event, persons.id)} />
-          })
-        }
+        <Persons
+          persons={personsState.persons}
+          clicked={deletePersonHandler}
+          changed={nameChangedHandler} />
       </div>
     );
   }
